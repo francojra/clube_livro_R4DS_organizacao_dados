@@ -48,3 +48,12 @@ billboard |>
     values_to = "position"
   ) |>
   view()
+
+billboard |>
+  pivot_longer(
+    cols = starts_with("wk"),
+    names_to = "week",
+    values_to = "position",
+    values_drop_na = TRUE,
+  ) |>
+  view()
