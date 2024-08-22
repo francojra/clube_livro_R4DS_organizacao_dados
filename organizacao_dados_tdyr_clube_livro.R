@@ -57,3 +57,13 @@ billboard |>
     values_drop_na = TRUE,
   ) |>
   view()
+
+billboard |>
+  pivot_longer(
+    cols = starts_with("wk"),
+    names_to = "week", # Fica em formato caracter
+    values_to = "position",
+    values_drop_na = TRUE,
+  ) |>
+  mutate(parse_number(week)) |> # Transforma em números apenas
+  glimpse()
