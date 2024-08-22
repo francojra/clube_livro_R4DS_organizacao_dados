@@ -24,3 +24,27 @@
 
 library(tidyverse)
 library(dados)
+
+# Carregar dados ---------------------------------------------------------------------------------------------------------------------------
+
+## Exemplos de tabelas com diferentes organizações
+
+## Tabelas com número de casos documentados de tuberculose.
+
+tabela1 # Dados organizados
+tabela2 # Duas variáveis em uma mesma coluna
+tabela3 # Duas observações em uma mesma linha
+
+# Alongando os dados -----------------------------------------------------------------------------------------------------------------------
+
+## pivot_longer() e pivot_wider()
+
+billboard |> glimpse()
+
+billboard |>
+  pivot_longer(
+    cols = starts_with("wk"),
+    names_to = "week",
+    values_to = "position"
+  ) |>
+  view()
