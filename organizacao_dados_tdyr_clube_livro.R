@@ -129,7 +129,22 @@ cms_patient_experience |>
 cms_patient_experience |> 
   pivot_wider(
     id_cols = starts_with("org"),
-    names_from = measure_cd,
+    names_from = measure_cd, # Ignora a colina measue title que deixava com muitas linhas vazias
     values_from = prf_rate
+  ) |>
+  view()
+
+# Exercícios -------------------------------------------------------------------------------------------------------------------------------
+
+tabela1 |>
+  mutate(taxa = casos/populacao * 10000) |>
+  view()
+
+view(tabela2)
+
+tabela2 |>
+  pivot_wider(
+    names_from = tipo,
+    values_from = contagem
   ) |>
   view()
