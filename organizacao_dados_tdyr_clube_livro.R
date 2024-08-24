@@ -163,10 +163,22 @@ tabela2 |>
 view(tabela3)
 
 tabela3 |>
-  separate_wider_delim(cols = taxa, names_sep = "",
-                         delim = "/") |>
+  separate_wider_delim(
+    cols = taxa, 
+    delim = "/",
+    names_sep = "") |>
   rename(casos = taxa1,
          população = taxa2) |>
+  mutate(casos = parse_number(casos),
+         população = parse_number(população)) |>
+  view() |>
+  glimpse()
+
+tabela3 |>
+  separate_wider_delim(
+    cols = taxa, 
+    delim = "/",
+    names = c("casos", "população")) |>
   mutate(casos = parse_number(casos),
          população = parse_number(população)) |>
   view() |>
