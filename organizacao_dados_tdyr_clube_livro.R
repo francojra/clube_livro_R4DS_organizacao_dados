@@ -39,7 +39,7 @@ tabela3 # Duas observações em uma mesma linha
 
 ## pivot_longer() e pivot_wider()
 
-billboard |> glimpse()
+billboard |> glimpse() 
 
 billboard |>
   pivot_longer(
@@ -67,3 +67,14 @@ billboard |>
   ) |>
   mutate(parse_number(week)) |> # Transforma em números apenas
   glimpse()
+
+# Pivotagem --------------------------------------------------------------------------------------------------------------------------------
+
+## ps - "pressão sanguínea"
+
+df <- tribble(
+  ~id,  ~ps1, ~ps2,
+   "A",  100,  120,
+   "B",  140,  115,
+   "C",  120,  125
+)
