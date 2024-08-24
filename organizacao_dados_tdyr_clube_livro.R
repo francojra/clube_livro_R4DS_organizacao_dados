@@ -82,7 +82,7 @@ df <- tribble(
 df |>
   pivot_longer(
     cols = starts_with("ps"),
-    names_to = "tipo_pressao",
-    values_to = "valor_pressao"
+    names_to = "medição",
+    values_to = "valor"
   ) |>
   view()
