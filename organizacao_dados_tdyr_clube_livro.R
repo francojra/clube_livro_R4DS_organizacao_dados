@@ -37,7 +37,7 @@ tabela3 # Duas observações em uma mesma linha
 
 # Alongando os dados -----------------------------------------------------------------------------------------------------------------------
 
-## pivot_longer() e pivot_wider()
+## pivot_longer() 
 
 billboard |> glimpse() 
 
@@ -95,5 +95,41 @@ who2 |>
     names_to = c("diagnosis", "gender", "age"), # Nome de cada uma das 3 siglas separadas pelo underline
     names_sep = "_",
     values_to = "count"
+  ) |>
+  view()
+
+view(household)
+
+household |>
+  pivot_longer(
+    cols = !family,
+    names_to = c(".value", "crianca"),
+    names_sep = "_",
+    values_drop_na = TRUE
+  ) |>
+  view()
+
+# Alargando os dados -----------------------------------------------------------------------------------------------------------------------
+
+## pivot_wider()
+
+view(cms_patient_experience)
+
+cms_patient_experience |> 
+  distinct(measure_cd, measure_title) |>
+  view()
+
+cms_patient_experience |> 
+  pivot_wider(
+    names_from = measure_cd,
+    values_from = prf_rate
+  ) |>
+  view()
+
+cms_patient_experience |> 
+  pivot_wider(
+    id_cols = starts_with("org"),
+    names_from = measure_cd,
+    values_from = prf_rate
   ) |>
   view()
