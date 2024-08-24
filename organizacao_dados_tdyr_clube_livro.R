@@ -146,5 +146,28 @@ tabela2 |>
   pivot_wider(
     names_from = tipo,
     values_from = contagem
-  ) |>
+  ) |> 
+  glimpse() |>
   view()
+
+## Calcular a taxa
+
+tabela2 |>
+  pivot_wider(
+    names_from = tipo,
+    values_from = contagem
+  ) |> 
+  mutate(taxa = casos/população * 10000) |>
+  view()
+
+view(tabela3)
+
+tabela3 |>
+  separate_wider_delim(cols = taxa, names_sep = "",
+                         delim = "/") |>
+  rename(casos = taxa1,
+         população = taxa2) |>
+  mutate(casos = parse_number(casos),
+         população = parse_number(população)) |>
+  view() |>
+  glimpse()
