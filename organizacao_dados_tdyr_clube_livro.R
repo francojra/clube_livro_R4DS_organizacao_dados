@@ -181,5 +181,6 @@ tabela3 |>
     names = c("casos", "população")) |>
   mutate(casos = parse_number(casos),
          população = parse_number(população)) |>
+  mutate(taxa = casos/população * 10000) |>
   view() |>
   glimpse()
