@@ -184,3 +184,14 @@ tabela3 |>
   mutate(taxa = casos/população * 10000) |>
   view() |>
   glimpse()
+
+tabela3 |>
+  separate_wider_delim(
+    cols = taxa, 
+    delim = "/",
+    names = c("casos", "população")) |>
+  mutate(casos = as.numeric(casos),
+         população = as.numeric(população),
+         taxa = casos/população * 10000) |>
+  view() |>
+  glimpse()
