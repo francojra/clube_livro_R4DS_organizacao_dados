@@ -86,3 +86,10 @@ df |>
     values_to = "valor"
   ) |>
   view()
+
+view(who2)
+
+who2 |>
+  pivot_longer(
+    names_sep = "_"
+  )
