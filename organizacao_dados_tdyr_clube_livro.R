@@ -78,3 +78,11 @@ df <- tribble(
    "B",  140,  115,
    "C",  120,  125
 )
+
+df |>
+  pivot_longer(
+    cols = starts_with("ps"),
+    names_to = "tipo_pressao",
+    values_to = "valor_pressao"
+  ) |>
+  view()
