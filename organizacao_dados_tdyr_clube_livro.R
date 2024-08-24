@@ -89,7 +89,11 @@ df |>
 
 view(who2)
 
-who2 |>
+who2 |> 
   pivot_longer(
-    names_sep = "_"
-  )
+    cols = !(country:year),
+    names_to = c("diagnosis", "gender", "age"), # Nome de cada uma das 3 siglas separadas pelo underline
+    names_sep = "_",
+    values_to = "count"
+  ) |>
+  view()
